@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RequestMapping("/api/v1/employee")
 @RestController
@@ -30,7 +31,8 @@ public class EmployeeController {
 
   @GetMapping("/{sortKey}")
   @ApiOperation(value = "Returns sorted list of all employees based upon sortKey")
-  public List<Employee> getAllEmployees(@PathVariable String sortKey) {
+  public List<Employee> getAllEmployees(
+      @ApiParam(value = "valid porperty of type Employee") @PathVariable String sortKey) {
     return employeeService.getAllEmployees(sortKey);
   }
 }
